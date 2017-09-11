@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ReflectionApplication
 {
-    public partial class Form1 : Form
+    public partial class EntryForm : Form
     {
-        public Form1()
+        public EntryForm()
         {
             InitializeComponent();
         }
