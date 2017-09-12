@@ -120,6 +120,7 @@
             this.Controls.Add(this.lblTypes);
             this.Name = "EntryForm";
             this.Text = "Reflection Application";
+            this.Load += new System.EventHandler(this.EntryForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
