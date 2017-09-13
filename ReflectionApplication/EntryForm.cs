@@ -37,6 +37,13 @@ namespace ReflectionApplication
             lstInfo.Items.Clear();
             lstInfo.Items.Add("--- Constructors ---");
             lstInfo.Items.AddRange(Members.GetConstructors(type).ToArray());
+            // empty item as separator
+            lstInfo.Items.Add("");
+            // adding fields
+            lstInfo.Items.Add("--- Fields ---");
+            lstInfo.Items.AddRange(Members.GetFields(type).ToArray());
+            lstInfo.Items.Add("");
+        
         }
     }
 }
