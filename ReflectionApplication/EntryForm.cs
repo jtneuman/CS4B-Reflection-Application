@@ -15,7 +15,8 @@ namespace ReflectionApplication
     public partial class EntryForm : Form
     {
         const string assemblyPath =
-            @"C:\Users\jtneuman\Documents\Visual Studio 2017\Projects\CS4B\Reflection Application\TestAssembly\";
+            @"E:\Documents\Visual Studio 2017\Projects\CS4B-Reflection-Application\TestAssembly\bin\Debug\TestAssembly.dll";
+
         Assembly assembly;
 
         public EntryForm()
@@ -28,6 +29,14 @@ namespace ReflectionApplication
             assembly = LoadAssembly.LoadReflectionOnly(assemblyPath);
 
             cboTypes.DataSource = Members.GetTypeNames(assembly);
+        }
+
+        private void cboTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var type = Members.GetType(assembly, cboTypes.Text);
+            lstInfo.Items.Clear();
+            lstInfo.Items.Add("--- Constructors ---");
+            lstInfo.Items.AddRange(Members.GetConstructors(type).ToArray());
         }
     }
 }

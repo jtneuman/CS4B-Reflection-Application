@@ -54,6 +54,7 @@
             this.cboTypes.Name = "cboTypes";
             this.cboTypes.Size = new System.Drawing.Size(256, 21);
             this.cboTypes.TabIndex = 1;
+            this.cboTypes.SelectedIndexChanged += new System.EventHandler(this.cboTypes_SelectedIndexChanged);
             // 
             // lstInfo
             // 
