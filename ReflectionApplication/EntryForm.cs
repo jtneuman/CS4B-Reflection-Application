@@ -15,7 +15,7 @@ namespace ReflectionApplication
     public partial class EntryForm : Form
     {
         const string assemblyPath =
-            @"E:\Documents\Visual Studio 2017\Projects\CS4B-Reflection-Application\TestAssembly\bin\Debug\TestAssembly.dll";
+            @"C:\Users\jtneuman\Documents\Visual Studio 2017\Projects\CS4B\Reflection Application\TestAssembly\bin\Debug\TestAssembly.dll";
 
         Assembly assembly;
 

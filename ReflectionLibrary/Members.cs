@@ -9,6 +9,13 @@ namespace ReflectionLibrary
 {
     public class Members
     {
+        #region Constants
+
+        static BindingFlags flags =
+            BindingFlags.Instance | BindingFlags.NonPublic |
+            BindingFlags.Public | BindingFlags.DeclaredOnly;
+
+        #endregion
 
         #region Type Methods
 
@@ -50,6 +57,16 @@ namespace ReflectionLibrary
                 constructors.Add(ctr.ToString());
             }
             return constructors;
+        } // end GetConstructors method
+
+        public static List<string> GetFields(Type type)
+        {
+            return (
+                from t in type.GetFields(flags)
+                where !t.Name.Contains("<")
+                select String.Format("{0} {1} {2}", t.IsPrivate ?
+                    "private" : "public", t.FieldType.Name, t.Name)
+                ).ToList();
         }
 
         #endregion
