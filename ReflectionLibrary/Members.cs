@@ -69,6 +69,48 @@ namespace ReflectionLibrary
                 ).ToList();
         }
 
+        public static List<string> GetProperties(Type type)
+        {
+            return (
+                from t in type.GetProperties(flags)
+                select String.Format(
+                    "{0} {1} {2} {{ {3} get; {4} set; }}",
+                    t.GetMethod.IsPrivate ? "private" : "public",
+                    t.PropertyType.Name,
+                    t.Name,
+                    t.GetGetMethod(true).IsPrivate ? "private" : "public",
+                    t.GetSetMethod(true).IsPrivate ? "private" : "public")
+                ).ToList();
+        }
+
+        public static List<string> GetMethods(Type type)
+        {
+            var result = new List<string>();
+            var methods =
+                from method in type.GetMethods(flags)
+                where !method.Name.Contains("get_") &&
+                    !method.Name.Contains("set_")
+                select method;
+
+            foreach (var method in methods)
+            {
+                var parameters = new StringBuilder();
+                foreach (var parameter in method.GetParameters())
+                    parameters.Append(String.Format("{0} {1}, ",
+                        parameter.ParameterType.Name, parameter.Name));
+
+                if (parameters.Length > 0)
+                    parameters.Remove(parameters.Length - 2, 2);
+
+                result.Add(String.Format("{0} {1} {2}({3})",
+                    method.IsPrivate ? "private" : "publice",
+                    method.ReflectedType.Name,
+                    method.Name,
+                    parameters.ToString()));
+            }
+            return result;
+        }
+
         #endregion
 
     }

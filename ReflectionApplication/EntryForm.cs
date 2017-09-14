@@ -14,8 +14,10 @@ namespace ReflectionApplication
 {
     public partial class EntryForm : Form
     {
+        // @"C:\Users\jtneuman\Documents\Visual Studio 2017\Projects\CS4B\Reflection Application\TestAssembly\bin\Debug\TestAssembly.dll";
+        // @"E:\Documents\Visual Studio 2017\Projects\CS4B-Reflection-Application\TestAssembly\bin\Debug\TestAssembly.dll";
         const string assemblyPath =
-            @"C:\Users\jtneuman\Documents\Visual Studio 2017\Projects\CS4B\Reflection Application\TestAssembly\bin\Debug\TestAssembly.dll";
+            @"E:\Documents\Visual Studio 2017\Projects\CS4B-Reflection-Application\TestAssembly\bin\Debug\TestAssembly.dll";
 
         Assembly assembly;
 
@@ -43,6 +45,13 @@ namespace ReflectionApplication
             lstInfo.Items.Add("--- Fields ---");
             lstInfo.Items.AddRange(Members.GetFields(type).ToArray());
             lstInfo.Items.Add("");
+            // adding properties
+            lstInfo.Items.Add("--- Properties ---");
+            lstInfo.Items.AddRange(Members.GetProperties(type).ToArray());
+            lstInfo.Items.Add("");
+            // adding methods
+            lstInfo.Items.Add("--- Methods ---");
+            lstInfo.Items.AddRange(Members.GetMethods(type).ToArray());
         
         }
     }
