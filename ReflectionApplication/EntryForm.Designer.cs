@@ -80,6 +80,7 @@
             this.btnCallMethod.TabIndex = 4;
             this.btnCallMethod.Text = "Call Method";
             this.btnCallMethod.UseVisualStyleBackColor = true;
+            this.btnCallMethod.Click += new System.EventHandler(this.btnCallMethod_Click);
             // 
             // btnSetProperty
             // 

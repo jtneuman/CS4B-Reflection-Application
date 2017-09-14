@@ -54,5 +54,22 @@ namespace ReflectionApplication
             lstInfo.Items.AddRange(Members.GetMethods(type).ToArray());
         
         }
+
+        private void btnCallMethod_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                assembly = LoadAssembly.LoadExecutable(assemblyPath);
+                var type = Members.GetType(assembly, cboTypes.Text);
+                var instance = Members.CreateWithSpecificConstructor(type,
+                    new DateTime(1970, 5, 4));
+                lblResult.Text = Members.ExecuteMethod(instance, "GetAge").ToString();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

@@ -18,6 +18,12 @@ namespace ReflectionLibrary
             return Assembly.ReflectionOnlyLoadFrom(assemblyPath);
         }
 
+        public static Assembly LoadExecutable(string assemblyPath)
+        {
+            // Executable context
+            return Assembly.LoadFrom(assemblyPath);
+        }
+
         #endregion
     }
 }

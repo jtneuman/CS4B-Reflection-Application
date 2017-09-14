@@ -17,6 +17,40 @@ namespace ReflectionLibrary
 
         #endregion
 
+        #region Instance Members
+
+        public static object CreateWithSpecificConstructor(Type type, 
+            DateTime date)
+        {
+            try
+            {
+                var result = new List<string>();
+                var constructor = type.GetConstructor(new Type[1] { typeof(DateTime) });
+                return constructor.Invoke(new object[1] { date });
+            }
+            catch
+            {
+
+                throw;
+            }
+        }// end CreateWithSpecificConstructor method
+
+        public static object ExecuteMethod(object instance, string methodName)
+        {
+            try
+            {
+                var method = instance.GetType().GetMethod(methodName, new Type[0]);
+                return method.Invoke(instance, new object[0]);
+            }
+            catch
+            {
+
+                return null;
+            }
+        }
+
+        #endregion
+
         #region Type Methods
 
         public static List<string> GetTypeNames(Assembly assembly)
