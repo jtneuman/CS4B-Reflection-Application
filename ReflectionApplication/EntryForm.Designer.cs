@@ -90,6 +90,7 @@
             this.btnSetProperty.TabIndex = 5;
             this.btnSetProperty.Text = "Set Property";
             this.btnSetProperty.UseVisualStyleBackColor = true;
+            this.btnSetProperty.Click += new System.EventHandler(this.btnSetProperty_Click);
             // 
             // btnGetProperty
             // 
@@ -99,6 +100,7 @@
             this.btnGetProperty.TabIndex = 6;
             this.btnGetProperty.Text = "Get Property";
             this.btnGetProperty.UseVisualStyleBackColor = true;
+            this.btnGetProperty.Click += new System.EventHandler(this.btnGetProperty_Click);
             // 
             // txtValue
             // 
