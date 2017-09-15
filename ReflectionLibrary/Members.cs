@@ -49,6 +49,49 @@ namespace ReflectionLibrary
             }
         }
 
+        public static void SetProperty(object instance, string propertyName,
+            object value)
+        {
+            try
+            {
+                var property = instance.GetType().GetProperty(propertyName);
+                property.SetValue(instance, value);
+            }
+            catch
+            {
+
+                throw;
+            }
+        }
+
+        public static object GetProperty(object instance, string propertyName)
+        {
+            try
+            {
+                var property = instance.GetType().GetProperty(propertyName);
+                return property.GetValue(instance);
+            }
+            catch
+            {
+
+                throw;
+            }
+        }
+
+        public static object CreateWithDefaultConstructor(Type type)
+        {
+            try
+            {
+                var constructor = type.GetConstructor(new Type[0]);
+                return constructor.Invoke(new object[0]);
+            }
+            catch
+            {
+
+                throw;
+            }
+        }
+
         #endregion
 
         #region Type Methods
